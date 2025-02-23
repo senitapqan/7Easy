@@ -17,12 +17,11 @@ defmodule AppWeb.AuthController do
     with {:ok, params} <- SignInContract.conform(unsafe_params) do
       _request_log = App.Logs.create_request_log!(:sign_in, params)
 
-      %{
-        email: params.email,
-        password: params.password,
-      }
 
-      json(conn, %{})
+      case App.Auth.sign_in(%{email: params.email, password: params.password}) do
+        {:ok, user_id} -> json(conn, %{user_id: user_id})
+        {:error, error} -> json(conn, %{msg: error})
+      end
     end
   end
 
@@ -46,8 +45,8 @@ defmodule AppWeb.AuthController do
       _request_log = App.Logs.create_request_log!(:sign_up, params)
 
       case Auth.sign_up(params) do
-        {:ok, token, user_id} ->
-          json(conn, %{token: token, user_id: user_id})
+        {:ok, user_id} ->
+          json(conn, %{user_id: user_id})
 
         {:error, error} ->
           json(conn, %{error: error})

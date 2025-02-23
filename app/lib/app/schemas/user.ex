@@ -8,11 +8,11 @@ defmodule App.Schema.User do
   @status [:active, :deleted]
 
   schema "users" do
+    field :user_id, Ecto.UUID, autogenerate: true
     field :name, :string
     field :surname, :string
     field :phone, :string
     field :username, :string
-    field :user_id, :string
     field :email, :string
     field :password, :string
     field :current_result, :integer
