@@ -1,7 +1,8 @@
 defmodule App.Users do
   import Ecto.Changeset
 
-  alias App.Schema.User
+  alias App.Schemas.User
+  alias App.Repo
 
   def create_user(attrs) do
     %User{}
@@ -9,30 +10,7 @@ defmodule App.Users do
     |> App.Repo.insert()
   end
 
-  def get_user_by_phone(phone, opts \\ []) do
-    preload = Keyword.get(opts, :preload, [])
-    [] = opts
-
-    User
-    |> App.Repo.get_by(phone: phone)
-    |> App.Repo.preload(preload)
-  end
-
-  def get_user_by_email(email, opts \\ []) do
-    preload = Keyword.get(opts, :preload, [])
-    [] = opts
-
-    User
-    |> App.Repo.get_by(email: email)
-    |> App.Repo.preload(preload)
-  end
-
-  def get_user_by_id(id, opts \\ []) do
-    preload = Keyword.get(opts, :preload, [])
-    [] = opts
-
-    User
-    |> App.Repo.get(id)
-    |> App.Repo.preload(preload)
+  def get_user_by_email(email) do
+    Repo.get_by(User, email: email)
   end
 end

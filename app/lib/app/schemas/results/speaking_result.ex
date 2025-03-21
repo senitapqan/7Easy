@@ -1,4 +1,4 @@
-defmodule App.Schema.Results.SpeakingResult do
+defmodule App.Schemas.SpeakingResult do
   use App.Schema
 
   schema "speaking_results" do

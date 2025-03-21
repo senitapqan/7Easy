@@ -32,6 +32,8 @@ defmodule App.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:geminex, "~> 0.1.0"},
+      {:req, "~> 0.5.0"},
       {:phoenix, "~> 1.7.19"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
@@ -48,6 +50,8 @@ defmodule App.MixProject do
       {:drops, "~> 0.2"},
       {:bcrypt_elixir, "~> 3.0"},
       {:joken, "~> 2.6"},
+      {:ex_machina, "~> 2.8.0", only: :test},
+      {:dotenv_parser, "~> 2.0", only: [:dev, :test]}
     ]
   end
 

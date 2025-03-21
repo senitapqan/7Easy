@@ -1,20 +1,17 @@
-defmodule App.Schema.Results.ReadingResult do
+defmodule App.Schemas.ReadingResult do
   use App.Schema
 
-  alias App.Schema.Test
-  alias App.Schema.User
-
-  @status [:active, :deleted]
+  alias App.Schemas.User
+  alias App.Schemas.Reading
 
   schema "reading_results" do
-    field :content, :map
+    field :content, {:array, :map}
     field :correct_count, :integer
-    field :incorrect_count, :integer
-    field :result, :integer
-    field :status, Ecto.Enum, values: @status, default: :active
+    field :score, :float
 
     belongs_to :user, User
-    belongs_to :test, Test
+    belongs_to :reading, Reading
+
     timestamps()
   end
 end

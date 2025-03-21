@@ -1,26 +1,19 @@
-defmodule App.Schema.User do
-  use App.Schema
+defmodule App.Schemas.User do
+  use Ecto.Schema
 
-  alias App.Schema.Results.ListeningResult
-  alias App.Schema.Results.ReadingResult
-  alias App.Schema.Results.WritingResult
-
-  @status [:active, :deleted]
+  alias App.Schemas.ListeningResult
+  alias App.Schemas.ReadingResult
+  alias App.Schemas.WritingResult
 
   schema "users" do
-    field :user_id, Ecto.UUID, autogenerate: true
-    field :name, :string
-    field :surname, :string
-    field :phone, :string
-    field :username, :string
     field :email, :string
     field :password, :string
-    field :current_result, :integer
-    field :status, Ecto.Enum, values: @status, default: :active
+    field :current_score, :float
 
     has_many :listening_results, ListeningResult
     has_many :reading_results, ReadingResult
     has_many :writing_results, WritingResult
+
     timestamps()
   end
 end

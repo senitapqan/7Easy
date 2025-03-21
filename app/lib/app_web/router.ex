@@ -16,8 +16,12 @@ defmodule AppWeb.Router do
     post "/sign_up", AppWeb.AuthController, :sign_up
   end
 
-  scope "/api", AppWeb do
+  scope "/api" do
     pipe_through [:api, :authenticate]
+
+    get "/test", AppWeb.TestController, :get_test
+    post "/test/save", AppWeb.TestController, :save_test
+    post "/test/writing", AppWeb.TestController, :save_writing_test
   end
 
   if Application.compile_env(:app, :dev_routes) do

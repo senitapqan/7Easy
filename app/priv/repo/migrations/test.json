@@ -1,0 +1,13 @@
+{
+    "part1": {
+        
+        "text": "London is the capital of Great Britain",
+        "questions": [
+            {
+                "question": "What is the capital of Great Britain?",
+                "answers": ["London", "Paris", "Berlin", "Madrid"],
+                "correct_answer": "London"
+            }
+        ]
+    }
+}

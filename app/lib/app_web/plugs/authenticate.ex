@@ -1,5 +1,6 @@
 defmodule AppWeb.Plugs.Authenticate do
   import Plug.Conn
+
   def init(opts) do
     opts
   end
@@ -10,8 +11,7 @@ defmodule AppWeb.Plugs.Authenticate do
     |> App.Auth.verify_token()
     |> case do
       {:ok, user_id} ->
-        conn
-        |> assign(:user_id, user_id)
+        assign(conn, :user_id, user_id)
 
       false ->
         conn

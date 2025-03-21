@@ -1,0 +1,282 @@
+[
+    {
+        "question": "Aphantasia is a condition, which describes people, for whom it is hard to visualise mental images.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "FALSE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Niel Kenmuir was unable to count sheep in his head",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "People with aphantasia struggle to remember personal traits and clothes of different people.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "NOT GIVEN",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Niel regrets that he cannot portray an image of his fiancee in his mind.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Inability to picture things in someone's head is often a cause of distress for a person",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "All people with aphantasia start to feel 'isolated' or 'alone' at some point of their lives.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "NOT GIVEN",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Lauren Beard's career depends on her imagination.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "The author met Lauren Beard when she was working on a comedy scene in her next book.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "FALSE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": " Only a small fraction of people have imagination as ___________ as Lauren does.",
+        "answers": [],
+        "correct_answer": "Vibrant",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Hyperphantasia is ___________ to aphantasia.",
+        "answers": [],
+        "correct_answer": "Polar-opposite",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "There are a lot of subjectivity in comparing people's imagination - somebody's vivid scene could be another person's ___________.",
+        "answers": [],
+        "correct_answer": "Grainy picture",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Prof Zeman is ___________ that aphantasia is not an illness.",
+        "answers": [],
+        "correct_answer": "Adamant",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Many people spend their lives with ___________ somewhere in the mind's eye.",
+        "answers": [],
+        "correct_answer": "Imagery hovering",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Jailbreak with creative thinking _____.",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+        "correct_answer": "C",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Five common traits among rule-breakers _____.",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+        "correct_answer": "G",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Comparison between criminals and traditional businessmen _____.",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+        "correct_answer": "B",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Can drug baron's espace teach legitimate corporations? _____.",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+        "correct_answer": "A",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Great entrepreneur _____.",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+        "correct_answer": "H",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "How criminal groups deceive the law _____.",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+        "correct_answer": "D",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "The difference between legal and illegal organisations _____.",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+        "correct_answer": "E",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Similarity between criminals and start-up founders _____.",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H"],
+        "correct_answer": "F",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "To escape from a prison, Joaquin Guzman had to use such traits as creative thinking, long-term planning and _____ .",
+        "answers": [],
+        "correct_answer": "Perseverance",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "The Sinaloa cartel built a grand underground tunnel and even used a _____ to avoid the fence.",
+        "answers": [],
+        "correct_answer": "Catapult",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "The main difference between two groups is that criminals, unlike large corporations, often have _____ encoded into their daily life.",
+        "answers": [],
+        "correct_answer": "Improvisation",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Due to being persuasive, Walid Abdul-Wahab found a _____ of Amish camel milk farmers.",
+        "answers": [],
+        "correct_answer": "Network",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "The main goal of this article is to: ",
+        "answers": ["Show different ways of illegal activity", "Give an overview of various criminals and their gangs", "Draw a comparison between legal and illegal business, providing examples", "Justify criminals with creative thinking"],
+        "correct_answer": "Draw a comparison between legal and illegal business, providing examples",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Armando Iannucci expressed a need of having more popular channels.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "John Whittingdale wanted to dismantle the BBC.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "FALSE",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Iannucci delivered the 30th annual MacTaggart Lecture.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "NOT GIVEN",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Iannucci believes that British television has contributed to the success of American TV-shows.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "There have been negotiations over the future of the BBC in July.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "FALSE",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {   
+        "question": "Iannucci praised everything EXCEPT",
+        "answers": ["US shows", "British shows", "Corporation", "British programming"],
+        "correct_answer": "US shows",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "To advise on the charter renewal Mr Whittingdale appointed a panel of",
+        "answers": ["five people", "two people", "seven people", "four people"],
+        "correct_answer": "seven people",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "Who of these people was NOT invited to the discussion concerning BBC renewal?",
+        "answers": ["Armando Iannucci", "Dawn Airey", "John Whittingdale", "Stewart Purvis"],
+        "correct_answer": "Armando Iannucci",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 1
+    },
+    {
+        "question": "There panel of experts lacks:",
+        "answers": ["media owners", "people who make enduring TV-shows", "gurus of Television industry", "top executives"],
+        "correct_answer": "people who make enduring TV-shows",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 1
+    }
+]

@@ -15,12 +15,14 @@ defmodule AppWeb.AuthController do
 
   def sign_in(conn, unsafe_params) do
     with {:ok, params} <- SignInContract.conform(unsafe_params) do
-      _request_log = App.Logs.create_request_log!(:sign_in, params)
-
-
       case App.Auth.sign_in(%{email: params.email, password: params.password}) do
-        {:ok, user_id} -> json(conn, %{user_id: user_id})
-        {:error, error} -> json(conn, %{msg: error})
+        {:ok, token} ->
+          json(conn, %{token: token})
+
+        {:error, error} ->
+          conn
+          |> put_status(401)
+          |> json(%{msg: error})
       end
     end
   end
@@ -31,18 +33,13 @@ defmodule AppWeb.AuthController do
     schema(atomize: true) do
       %{
         required(:email) => string(:filled?),
-        required(:password) => string(:filled?),
-        required(:username) => string(:filled?),
-        required(:phone) => string(:filled?),
-        required(:name) => string(:filled?),
-        required(:surname) => string(:filled?)
+        required(:password) => string(:filled?)
       }
     end
   end
 
   def sign_up(conn, unsafe_params) do
     with {:ok, params} <- SignUpContract.conform(unsafe_params) do
-      _request_log = App.Logs.create_request_log!(:sign_up, params)
 
       case Auth.sign_up(params) do
         {:ok, user_id} ->
