@@ -25,6 +25,7 @@ defmodule App.GeminiApi.GeminiClient do
   def mark_essay(essay, question) do
     prompt = """
     Evaluate the following IELTS essay based on the question: #{question}.
+    Very importantly, check if the essay is following the question.
     And never answer like "N/A" or "No feedback" and so on.
     Also write your own essay based on this question.
     Provide feedback in this structured format:
@@ -33,7 +34,7 @@ defmodule App.GeminiApi.GeminiClient do
     Vocabulary: [Feedback on vocabulary]
     Structure: [Feedback on structure]
     Overall Feedback: [General feedback]
-    AI Essay: ***[Your own essay]***
+    AI Essay: ***[Your own essay].***
     Output ONLY the structured feedback. Do not include any additional text or explanations.
     Essay: #{essay}
     """
