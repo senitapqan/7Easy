@@ -12,8 +12,12 @@ config :app,
   generators: [timestamp_type: :utc_datetime]
 
 config :app, App.Repo,
-  migration_primary_key: [type: :binary_id],
   migration_timestamps: [type: :utc_datetime_usec]
+
+config :geminex,
+  environment: :sandbox,
+  api_key: System.get_env("GEMINI_API_KEY"),
+  api_secret: System.get_env("GEMINI_API_SECRET")
 
 # Configures the endpoint
 config :app, AppWeb.Endpoint,

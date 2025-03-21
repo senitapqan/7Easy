@@ -1,0 +1,11 @@
+[
+    {
+        "titles": ["Part 1", "Part 2", "Part 3"],
+        "audio_urls": [
+            "https://7easy.s3.eu-north-1.amazonaws.com/listening-1-section-1.mp3",
+            "https://7easy.s3.eu-north-1.amazonaws.com/listening-1-section-2.mp3",
+            "https://7easy.s3.eu-north-1.amazonaws.com/listening-1-section-3.mp3"
+        ],
+        "question_count": 27
+    }
+]

@@ -1,0 +1,218 @@
+[
+    {
+        "question": "First name: _______.",
+        "answers": [],
+        "correct_answer": "Keiko",
+        "part": 1,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Passport number: _______.",
+        "answers": [],
+        "correct_answer": "JO6337",
+        "part": 1,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Course enrolled: _______.",
+        "answers": [],
+        "correct_answer": "Advanced English studies",
+        "part": 1,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Length of the course: _______.",
+        "answers": [],
+        "correct_answer": "5 months",
+        "part": 1,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Homestay time: _______.",
+        "answers": [],
+        "correct_answer": "About 4 months",
+        "part": 1,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Whick kind of family does the girls prefer?",
+        "answers": ["A big family with many young children", "A family without smoker or drinkers", "A family without any pets"],
+        "correct_answer": "A big family with many young children",
+        "part": 1,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Although the girl is not a vegetarian, she doesn't eat a lot of meat. Her favourite food is _______.",
+        "answers": [],
+        "correct_answer": "Seafood",
+        "part": 1,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "The girls has given up playing handball. Now, she just play _______ with her friends at weekends.",
+        "answers": [],
+        "correct_answer": "Tennis",
+        "part": 1,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "The girl does not like the bus because they are always late. She would rather _______.",
+        "answers": [],
+        "correct_answer": "Take the train",
+        "part": 1,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "The girl can get the information about the homestay family that she wants _______.",
+        "answers": [],
+        "correct_answer": "This afternoon",
+        "part": 1,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Normal visas last _______.",
+        "answers": [],
+        "correct_answer": "90 days",
+        "part": 2,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "You need to pay _______ for the visa.",
+        "answers": [],
+        "correct_answer": "30 pounds",
+        "part": 2,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Some Enzian consulates neighbouring countries require you to provide a letter to _______.",
+        "answers": [],
+        "correct_answer": "Confirm your nationality",
+        "part": 2,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "You can get information of major embassies on _______ of the student handbook.",
+        "answers": [],
+        "correct_answer": "Page 13",
+        "part": 2,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "If you carry a lot of money, you need to complete a _______.",
+        "answers": [],
+        "correct_answer": "Currency form",
+        "part": 2,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Remember to declare all your items, especially expensive items, on a _______.",
+        "answers": [],
+        "correct_answer": "Tourist export form",
+        "part": 2,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "You are advised to carry a health certificate. The one you need is the _______.",
+        "answers": [],
+        "correct_answer": "BM276",
+        "part": 2,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "If you wish to get a youth fare card, you should show your _______.",
+        "answers": [],
+        "correct_answer": "International student card",
+        "part": 2,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Due to the bureaucracy in Eznia, you are advised to take at least _______ passport photos with you.",
+        "answers": [],
+        "correct_answer": "12",
+        "part": 2,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "Pounds and US dollars are not very useful now in Eznia, so you should take _______ or Australian dollar with you.",
+        "answers": [],
+        "correct_answer": "Yen",
+        "part": 2,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "The woman being interviewed is now working in the bank. Her occupation is _______.",
+        "answers": [],
+        "correct_answer": "",
+        "part": 3,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "The woman usually spends about _______ when she goes shopping.",
+        "answers": [],
+        "correct_answer": "",
+        "part": 3,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "The woman often goes to _______ because she finds them convenient.",
+        "answers": [],
+        "correct_answer": "",
+        "part": 3,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "According to the woman, _______ is/are her most difficult thing(s) to buy.",
+        "answers": [],
+        "correct_answer": "",
+        "part": 3,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "50% of the people being interviewed spend _______ a month.",
+        "answers": [],
+        "correct_answer": "",
+        "part": 3,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "15% of the people being interviewed spend _______ a month.",
+        "answers": [],
+        "correct_answer": "",
+        "part": 3,
+        "test_type": "listening",
+        "test_id": 2
+    },
+    {
+        "question": "35% of the people being interviewed spend _______ a month.",
+        "answers": [],
+        "correct_answer": "",
+        "part": 3,
+        "test_type": "listening",
+        "test_id": 2
+    }
+]

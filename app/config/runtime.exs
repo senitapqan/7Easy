@@ -16,6 +16,9 @@ import Config
 #
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
+
+DotenvParser.load_file(".env")
+
 if System.get_env("PHX_SERVER") do
   config :app, AppWeb.Endpoint, server: true
 end

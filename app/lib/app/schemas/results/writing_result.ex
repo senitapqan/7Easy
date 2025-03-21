@@ -1,18 +1,23 @@
-defmodule App.Schema.Results.WritingResult do
+defmodule App.Schemas.WritingResult do
   use App.Schema
 
-  alias App.Schema.User
-  alias App.Schema.WritingTopic
-
-  @status [:active, :deleted]
+  alias App.Schemas.User
+  alias App.Schemas.WritingTest
 
   schema "writing_results" do
-    field :result, :integer
-    field :content, :string
-    field :status, Ecto.Enum, values: @status, default: :active
+    field :score, :float
+
+    field :user_essay, :string
+    field :ai_essay, :string
+
+    field :grammar_feedback, :string
+    field :vocabulary_feedback, :string
+    field :structure_feedback, :string
+    field :overall_feedback, :string
 
     belongs_to :user, User
-    belongs_to :writing_topic, WritingTopic
+    belongs_to :writing, WritingTest
+
     timestamps()
   end
 end
