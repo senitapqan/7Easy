@@ -47,7 +47,7 @@ defmodule App.GeminiApi.GeminiParser do
     vocabulary_feedback = extract_value(text, ~r/Vocabulary: (.*)\n/)
     structure_feedback = extract_value(text, ~r/Structure: (.*)\n/)
     overall_feedback = extract_value(text, ~r/Overall Feedback: (.*)\n/)
-    ai_essay = extract_value(text, ~r/\*\*\*([\s\S]*?)\*\*\*\n/)
+    ai_essay = extract_value(text, ~r/\*\*\*([\s\S]*?)\n/)
 
     %{
       score: score,
