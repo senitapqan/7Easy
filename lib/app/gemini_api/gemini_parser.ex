@@ -30,7 +30,6 @@ defmodule App.GeminiApi.GeminiParser do
     dbg(text)
     params = parse_marking_text(text)
 
-
     %WritingResult{
       score: params.score,
       grammar_feedback: params.grammar_feedback,
