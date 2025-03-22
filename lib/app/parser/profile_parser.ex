@@ -13,35 +13,33 @@ defmodule App.Parser.ProfileParser do
   end
 
   defp parse_listening_results(results) do
-    results
-    |> Enum.map(fn result ->
+    Enum.map(results, fn result ->
       %{
-        test_id: result.test_id,
+        test_id: result.listening_id,
         correct_count: result.correct_count,
-        incorrect_count: result.incorrect_count,
         score: result.score,
+        taken_at: result.inserted_at
       }
     end)
   end
 
   defp parse_reading_results(results) do
-    results
-    |> Enum.map(fn result ->
+    Enum.map(results, fn result ->
       %{
-        test_id: result.test_id,
+        test_id: result.reading_id,
         correct_count: result.correct_count,
-        incorrect_count: result.incorrect_count,
         score: result.score,
+        taken_at: result.inserted_at
       }
     end)
   end
 
   defp parse_writing_results(results) do
-    results
-    |> Enum.map(fn result ->
+    Enum.map(results, fn result ->
       %{
-        test_id: result.test_id,
+        test_id: result.writing_id,
         score: result.score,
+        taken_at: result.inserted_at
       }
     end)
   end

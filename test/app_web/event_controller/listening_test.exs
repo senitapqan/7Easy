@@ -2,6 +2,7 @@ defmodule AppWeb.EventController.ListeningTest do
   use AppWeb.ConnCase
 
   import App.Factory
+
   setup do
     insert(:user, email: "maskeugalievd@gmail.com", password: Bcrypt.hash_pwd_salt("qwerty"))
 

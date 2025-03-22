@@ -1,19 +1,17 @@
 defmodule App.Tests do
-
-  alias App.Parser.WritingParser
-  alias App.Parser.ReadingParser
-  alias App.Parser.ListeningParser
   alias App.GeminiApi.Gemini
-  alias App.Schemas.ReadingResult
-  alias App.Schemas.ListeningResult
+  alias App.Parser.ListeningParser
+  alias App.Parser.ReadingParser
+  alias App.Parser.WritingParser
   alias App.Repo
-  alias App.Schemas.Writing
   alias App.Schemas.Listening
-  alias App.Schemas.Reading
+  alias App.Schemas.ListeningResult
   alias App.Schemas.Question
+  alias App.Schemas.Reading
+  alias App.Schemas.ReadingResult
+  alias App.Schemas.Writing
 
   require Ecto.Query
-  import Ecto.Changeset
 
   def get_reading_test(id, opts \\ []) do
     preload = Keyword.get(opts, :preload, [])
@@ -67,7 +65,9 @@ defmodule App.Tests do
     Listening
     |> Repo.all()
     |> Enum.filter(fn test ->
-      not Repo.exists?(Ecto.Query.from(r in ListeningResult, where: r.user_id == ^user_id and r.listening_id == ^test.id))
+      not Repo.exists?(
+        Ecto.Query.from(r in ListeningResult, where: r.user_id == ^user_id and r.listening_id == ^test.id)
+      )
     end)
     |> Enum.random()
     |> Repo.preload(:questions)
@@ -100,12 +100,11 @@ defmodule App.Tests do
       {:error, _} ->
         {:error, "Failed to mark essay"}
     end
-
   end
 
   def save_listening_test(user_id, listening_id, answers) do
     listening = get_listening_test(listening_id)
-    {correct_count, _incorrect_count, score, content} = calculate_score(listening, answers)
+    {correct_count, score, content} = calculate_score(listening, answers)
 
     %ListeningResult{
       content: content,
@@ -115,11 +114,13 @@ defmodule App.Tests do
       score: score
     }
     |> Repo.insert!()
+
+    %{score: score}
   end
 
   def save_reading_test(user_id, reading_id, answers) do
     reading = get_reading_test(reading_id)
-    {correct_count, _incorrect_count, score, content} = calculate_score(reading, answers)
+    {correct_count, score, content} = calculate_score(reading, answers)
 
     %ReadingResult{
       content: content,
@@ -129,6 +130,8 @@ defmodule App.Tests do
       score: score
     }
     |> Repo.insert!()
+
+    %{score: score}
   end
 
   defp calculate_score(test, answers) do
@@ -137,26 +140,49 @@ defmodule App.Tests do
         {correct_count, content} = acc
         question = get_question(question_id)
 
-        if question.correct_answer == answer do
+        given_answer = String.downcase(answer)
+        expected_answer = String.downcase(question.correct_answer)
+
+        if given_answer == expected_answer do
           {correct_count + 1, [%{
-            question_id: question_id,
-            correct_answer: question.correct_answer,
-            chosen_answer: answer,
-            is_correct: true
-          } | content]}
+               question_id: question_id,
+               correct_answer: question.correct_answer,
+               chosen_answer: answer,
+               is_correct: true
+             } | content]}
         else
           {correct_count, [%{
-            question_id: question_id,
-            correct_answer: question.correct_answer,
-            chosen_answer: answer,
-            is_correct: false
-          } | content]}
+               question_id: question_id,
+               correct_answer: question.correct_answer,
+               chosen_answer: answer,
+               is_correct: false
+             } | content]}
         end
       end)
 
-    incorrect_count = test.question_count - correct_count
-    score = correct_count * 100 / test.question_count
+    score = get_score(test.question_count, correct_count)
 
-    {correct_count, incorrect_count, score, content}
+    {correct_count, score, content}
+  end
+
+  defp get_score(question_count, correct_count) do
+    scaled = correct_count / question_count * 40
+    cond do
+      scaled >= 39 -> 9.0
+      scaled >= 37 -> 8.5
+      scaled >= 35 -> 8.0
+      scaled >= 33 -> 7.5
+      scaled >= 30 -> 7.0
+      scaled >= 26 -> 6.5
+      scaled >= 23 -> 6.0
+      scaled >= 18 -> 5.5
+      scaled >= 16 -> 5.0
+      scaled >= 13 -> 4.5
+      scaled >= 10 -> 4.0
+      scaled >= 6  -> 3.5
+      scaled >= 3  -> 3.0
+      scaled >= 1  -> 2.5
+      true         -> 2.0
+    end
   end
 end

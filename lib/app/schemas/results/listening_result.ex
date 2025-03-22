@@ -1,8 +1,8 @@
 defmodule App.Schemas.ListeningResult do
   use App.Schema
 
-  alias App.Schemas.User
   alias App.Schemas.Listening
+  alias App.Schemas.User
 
   schema "listening_results" do
     field :content, {:array, :map}

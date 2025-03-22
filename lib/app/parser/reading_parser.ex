@@ -1,5 +1,4 @@
 defmodule App.Parser.ReadingParser do
-
   def parse_test(reading) do
     params = parse_test_parts(reading.titles, reading.texts, reading.questions, 1)
 
@@ -11,14 +10,18 @@ defmodule App.Parser.ReadingParser do
   end
 
   def parse_test_parts([], [], _questions, _part), do: []
+
   def parse_test_parts([title | titles], [text | texts], questions, part) do
     part_questions = Enum.filter(questions, fn question -> question.part == part end)
 
-    [%{
-      title: title,
-      text: text,
-      questions: parse_questions(part_questions)
-    } | parse_test_parts(titles, texts, questions, part + 1)]
+    [
+      %{
+        title: title,
+        text: text,
+        questions: parse_questions(part_questions)
+      }
+      | parse_test_parts(titles, texts, questions, part + 1)
+    ]
   end
 
   def parse_questions(questions) do

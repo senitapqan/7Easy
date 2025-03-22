@@ -3,6 +3,7 @@ alias App.Schemas.Reading
 
 defmodule App.Seeds do
   alias App.Repo
+
   def run do
     load_reading_tests()
     load_reading_questions()

@@ -12,7 +12,8 @@ defmodule App.GeminiApi.GeminiClient do
   end
 
   defp generate_task() do
-    prompt = "Generate a realistic IELTS Writing Task 2 question. Output ONLY the question. Do not include any additional text or explanations"
+    prompt =
+      "Generate a realistic IELTS Writing Task 2 question. Output ONLY the question. Do not include any additional text or explanations"
 
     params = %{contents: [%{parts: [%{text: prompt}]}]}
 
@@ -50,6 +51,7 @@ defmodule App.GeminiApi.GeminiClient do
 
   defp request(method, url, params) do
     url_with_key = "#{url}?key=#{api_key()}"
+
     req()
     |> Req.request(method: method, url: url_with_key, json: params)
     |> case do
@@ -67,11 +69,9 @@ defmodule App.GeminiApi.GeminiClient do
   end
 
   defp req() do
-    [
+    Req.new(
       json: true,
       receive_timeout: 60_000
-    ]
-    |> Req.new()
-
+    )
   end
 end

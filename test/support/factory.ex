@@ -1,11 +1,11 @@
 defmodule App.Factory do
   use ExMachina.Ecto, repo: App.Repo
 
+  alias App.Schemas.Listening
   alias App.Schemas.Question
   alias App.Schemas.Reading
-  alias App.Schemas.Listening
-  alias App.Schemas.Writing
   alias App.Schemas.User
+  alias App.Schemas.Writing
 
   defdelegate sequence(name), to: ExMachina
 
@@ -21,7 +21,7 @@ defmodule App.Factory do
     %Reading{
       question_count: 1,
       titles: ["Title 1"],
-      texts: ["GREAT BRITAIN\n\nLondon is the capital of Great Britain"],
+      texts: ["GREAT BRITAIN\n\nLondon is the capital of Great Britain"]
     }
   end
 

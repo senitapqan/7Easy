@@ -19,7 +19,9 @@ defmodule AppWeb.Router do
   scope "/api" do
     pipe_through [:api, :authenticate]
 
-    get "/test", AppWeb.TestController, :get_test
+    post "/profile", AppWeb.UserController, :get_profile
+
+    post "/test", AppWeb.TestController, :get_test
     post "/test/save", AppWeb.TestController, :save_test
     post "/test/writing", AppWeb.TestController, :save_writing_test
   end

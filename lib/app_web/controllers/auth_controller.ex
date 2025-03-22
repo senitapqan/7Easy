@@ -1,5 +1,6 @@
 defmodule AppWeb.AuthController do
   alias App.Auth
+
   use AppWeb, :controller
 
   defmodule SignInContract do
@@ -40,7 +41,6 @@ defmodule AppWeb.AuthController do
 
   def sign_up(conn, unsafe_params) do
     with {:ok, params} <- SignUpContract.conform(unsafe_params) do
-
       case Auth.sign_up(params) do
         {:ok, user_id} ->
           json(conn, %{user_id: user_id})

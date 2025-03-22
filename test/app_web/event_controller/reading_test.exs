@@ -2,6 +2,7 @@ defmodule AppWeb.EventController.ReadingTestTest do
   use AppWeb.ConnCase
 
   import App.Factory
+
   setup do
     insert(:user, email: "maskeugalievd@gmail.com", password: Bcrypt.hash_pwd_salt("qwerty"))
 
@@ -26,7 +27,6 @@ defmodule AppWeb.EventController.ReadingTestTest do
     |> get("/api/test?type=#{type}")
   end
 
-
   test "returns 200", %{token: token} do
     response = do_request(token, "reading")
     assert response.status == 200
@@ -36,5 +36,4 @@ defmodule AppWeb.EventController.ReadingTestTest do
     response = do_request("invalid_token", "reading")
     assert response.status == 401
   end
-
 end

@@ -1,8 +1,8 @@
 defmodule App.Schemas.ReadingResult do
   use App.Schema
 
-  alias App.Schemas.User
   alias App.Schemas.Reading
+  alias App.Schemas.User
 
   schema "reading_results" do
     field :content, {:array, :map}

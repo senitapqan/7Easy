@@ -1,6 +1,6 @@
 defmodule App.GeminiApi.Gemini do
-  alias App.Schemas.WritingResult
   alias App.Schemas.Writing
+  alias App.Schemas.WritingResult
 
   defp impl do
     Application.get_env(
