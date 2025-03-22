@@ -1,8 +1,8 @@
 defmodule AppWeb.EventController.SaveTestTest do
   use AppWeb.ConnCase
 
-  alias App.Tests.Schemas.Results.ReadingResult
   alias App.Repo
+  alias App.Tests.Schemas.Results.ReadingResult
 
   import App.Factory
   require Ecto.Query

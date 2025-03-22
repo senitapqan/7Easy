@@ -32,6 +32,7 @@ defmodule App.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:cors_plug, "~> 3.0"},
       {:geminex, "~> 0.1.0"},
       {:req, "~> 0.5.0"},
       {:phoenix, "~> 1.7.19"},
