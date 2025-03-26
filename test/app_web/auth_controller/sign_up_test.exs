@@ -1,12 +1,12 @@
 defmodule AppWeb.AuthControllerTest do
   use AppWeb.ConnCase
-
   import App.Factory
+
   alias App.Schemas.User
 
   def do_request() do
     params = %{
-      email: "test@test.com",
+      email: "test@example.com",
       password: "password"
     }
 
@@ -24,9 +24,9 @@ defmodule AppWeb.AuthControllerTest do
   end
 
   test "user with same email already exists" do
-    insert(:user, email: "test@test.com")
+    insert(:user, email: "test@example.com")
 
     response = do_request()
-    assert json_response(response, 400) == %{"msg" => "email_already_exists"}
+    assert json_response(response, 409) == %{"error" => "email_taken"}
   end
 end

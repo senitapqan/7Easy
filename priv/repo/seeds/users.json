@@ -1,0 +1,10 @@
+[
+    {
+        "email": "test@test.com",
+        "password": "password",
+        "avg_listening_score": 0.0,
+        "avg_reading_score": 0.0,
+        "avg_writing_score": 0.0,
+        "avg_speaking_score": 0.0
+    }
+]

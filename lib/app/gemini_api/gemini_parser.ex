@@ -27,35 +27,47 @@ defmodule App.GeminiApi.GeminiParser do
       |> List.first()
       |> Map.get("text")
 
-    dbg(text)
-    params = parse_marking_text(text)
+    case parse_marking_text(text) do
+      {:error, error} ->
+        {:error, error}
 
-    %WritingResult{
-      score: params.score,
-      grammar_feedback: params.grammar_feedback,
-      vocabulary_feedback: params.vocabulary_feedback,
-      structure_feedback: params.structure_feedback,
-      overall_feedback: params.overall_feedback,
-      ai_essay: params.ai_essay
-    }
+      params ->
+        {:ok,
+         %WritingResult{
+           score: params.score,
+           grammar_feedback: params.grammar_feedback,
+           vocabulary_feedback: params.vocabulary_feedback,
+           structure_feedback: params.structure_feedback,
+           overall_feedback: params.overall_feedback,
+           ai_essay: params.ai_essay
+         }}
+    end
   end
 
   defp parse_marking_text(text) do
-    score = String.to_float(extract_value(text, ~r/Score: \$\$\$(.*)\$\$\$\n/))
-    grammar_feedback = extract_value(text, ~r/Grammar: (.*)\n/)
-    vocabulary_feedback = extract_value(text, ~r/Vocabulary: (.*)\n/)
-    structure_feedback = extract_value(text, ~r/Structure: (.*)\n/)
-    overall_feedback = extract_value(text, ~r/Overall Feedback: (.*)\n/)
-    ai_essay = extract_value(text, ~r/\*\*\*([\s\S]*?)\n/)
+    score = extract_value(text, ~r/Score: \$\$\$(.*)\$\$\$\n/)
 
-    %{
-      score: score,
-      grammar_feedback: grammar_feedback,
-      vocabulary_feedback: vocabulary_feedback,
-      structure_feedback: structure_feedback,
-      overall_feedback: overall_feedback,
-      ai_essay: ai_essay
-    }
+    case score do
+      nil ->
+        {:error, :failed_to_mark_essay}
+
+      score ->
+        score = String.to_float(score)
+        grammar_feedback = extract_value(text, ~r/Grammar: (.*)\n/)
+        vocabulary_feedback = extract_value(text, ~r/Vocabulary: (.*)\n/)
+        structure_feedback = extract_value(text, ~r/Structure: (.*)\n/)
+        overall_feedback = extract_value(text, ~r/Overall Feedback: (.*)\n/)
+        ai_essay = extract_value(text, ~r/\*\*\*([\s\S]*?)\n/)
+
+        %{
+          score: score,
+          grammar_feedback: grammar_feedback,
+          vocabulary_feedback: vocabulary_feedback,
+          structure_feedback: structure_feedback,
+          overall_feedback: overall_feedback,
+          ai_essay: ai_essay
+        }
+    end
   end
 
   defp extract_value(response, regex) do

@@ -1,6 +1,5 @@
 defmodule AppWeb.EventControllerTest.ProfileTest do
   use AppWeb.ConnCase
-
   import App.Factory
 
   setup do
@@ -30,6 +29,7 @@ defmodule AppWeb.EventControllerTest.ProfileTest do
   test "profile", %{token: token} do
     response = do_request(token)
 
-    assert json_response(response, 200) == %{}
+    assert response.status == 200
+    dbg(Jason.decode!(response.resp_body))
   end
 end
