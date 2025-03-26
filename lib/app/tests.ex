@@ -1,4 +1,5 @@
 defmodule App.Tests do
+  alias App.Schemas.WritingResult
   alias App.GeminiApi.Gemini
   alias App.Parser.ListeningParser
   alias App.Parser.ReadingParser
@@ -10,6 +11,7 @@ defmodule App.Tests do
   alias App.Schemas.Reading
   alias App.Schemas.ReadingResult
   alias App.Schemas.Writing
+  alias App.Users
 
   require Ecto.Query
 
@@ -45,41 +47,110 @@ defmodule App.Tests do
     |> Repo.preload(preload)
   end
 
-  def pull_reading_test(user_id) do
+  def pass_reading_test(test_id) do
     Reading
-    |> Repo.all()
-    |> Enum.filter(fn test ->
-      not Repo.exists?(
-        Ecto.Query.from(
-          r in ReadingResult,
-          where: r.user_id == ^user_id and r.reading_id == ^test.id
-        )
-      )
-    end)
-    |> Enum.random()
-    |> Repo.preload(:questions)
-    |> ReadingParser.parse_test()
+    |> Repo.get(test_id)
+    |> case do
+      nil ->
+        {:error, :test_not_found}
+
+      test ->
+        test
+        |> Repo.preload(:questions)
+        |> ReadingParser.parse_test()
+    end
   end
 
-  def pull_listening_test(user_id) do
+  def pass_listening_test(test_id) do
     Listening
-    |> Repo.all()
-    |> Enum.filter(fn test ->
-      not Repo.exists?(
-        Ecto.Query.from(r in ListeningResult, where: r.user_id == ^user_id and r.listening_id == ^test.id)
-      )
-    end)
-    |> Enum.random()
-    |> Repo.preload(:questions)
-    |> ListeningParser.parse_test()
+    |> Repo.get(test_id)
+    |> case do
+      nil ->
+        {:error, :test_not_found}
+
+      test ->
+        test
+        |> Repo.preload(:questions)
+        |> ListeningParser.parse_test()
+    end
   end
 
-  def pull_writing_test() do
+  def pass_writing_test(nil) do
     {:ok, writing} = Gemini.generate_essay()
 
     writing
     |> Repo.insert!()
     |> WritingParser.parse_test()
+  end
+
+  def pass_writing_test(test_id) do
+    Writing
+    |> Repo.get(test_id)
+    |> case do
+      nil ->
+        {:error, :test_not_found}
+
+      test ->
+        test
+        |> WritingParser.parse_test()
+    end
+  end
+
+  def pull_reading_tests(user_id) do
+    Reading
+    |> Repo.all()
+    |> ReadingParser.parse_tests(user_id)
+  end
+
+  def pull_listening_tests(user_id) do
+    Listening
+    |> Repo.all()
+    |> ListeningParser.parse_tests(user_id)
+  end
+
+  def pull_writing_tests(user_id) do
+    Writing
+    |> Repo.all()
+    |> WritingParser.parse_tests(user_id)
+  end
+
+  def pull_writing_history(user_id, writing_result_id) do
+    WritingResult
+    |> Repo.get_by(user_id: user_id, id: writing_result_id)
+    |> case do
+      nil -> {:error, :user_didnt_pass_test}
+
+      result ->
+        result
+        |> Repo.preload(:writing)
+        |> WritingParser.parse_history()
+    end
+  end
+
+  def pull_listening_history(user_id, listening_result_id) do
+    ListeningResult
+    |> Repo.get_by(user_id: user_id, id: listening_result_id)
+    |> case do
+      nil -> {:error, :user_didnt_pass_test}
+
+      result ->
+        result
+        |> Repo.preload(:listening)
+        |> ListeningParser.parse_history()
+    end
+  end
+
+  def pull_reading_history(user_id, reading_result_id) do
+    ReadingResult
+    |> Repo.get_by(user_id: user_id, id: reading_result_id)
+    |> case do
+      nil -> {:error, :user_didnt_pass_test}
+
+      result ->
+        result
+        |> Repo.preload(:reading)
+        |> ReadingParser.parse_history()
+    end
   end
 
   def save_writing_test(user_id, writing_id, essay) do
@@ -88,50 +159,72 @@ defmodule App.Tests do
 
     case Gemini.mark_essay(essay, question) do
       {:ok, writing_result} ->
-        writing_result =
-          writing_result
-          |> Map.put(:user_id, user_id)
-          |> Map.put(:writing_id, writing_id)
-          |> Map.put(:user_essay, essay)
-          |> Repo.insert!()
+        {:ok, writing_result} =
+          App.Repo.transaction(fn ->
+            Users.update_avg_score(user_id, :writing, writing_result.score)
+
+            writing_result
+            |> Map.put(:user_id, user_id)
+            |> Map.put(:writing_id, writing_id)
+            |> Map.put(:user_essay, essay)
+            |> Repo.insert!()
+          end)
 
         WritingParser.parse_result(writing_result)
 
-      {:error, _} ->
-        {:error, "Failed to mark essay"}
+      {:error, error} ->
+        {:error, error}
     end
   end
 
   def save_listening_test(user_id, listening_id, answers) do
     listening = get_listening_test(listening_id)
-    {correct_count, score, content} = calculate_score(listening, answers)
 
-    %ListeningResult{
-      content: content,
-      user_id: user_id,
-      listening_id: listening_id,
-      correct_count: correct_count,
-      score: score
-    }
-    |> Repo.insert!()
+    if listening.question_count != length(answers) do
+      {:error, :invalid_number_of_answers}
+    else
+      {correct_count, score, content} = calculate_score(listening, answers)
 
-    %{score: score}
+    App.Repo.transaction(fn ->
+      Users.update_avg_score(user_id, :listening, score)
+
+      %ListeningResult{
+        content: content,
+        user_id: user_id,
+        listening_id: listening_id,
+        correct_count: correct_count,
+        score: score
+      }
+      |> Repo.insert!()
+    end)
+
+    {:ok, %{score: score}}
+  end
   end
 
   def save_reading_test(user_id, reading_id, answers) do
     reading = get_reading_test(reading_id)
-    {correct_count, score, content} = calculate_score(reading, answers)
 
-    %ReadingResult{
-      content: content,
-      user_id: user_id,
-      reading_id: reading_id,
-      correct_count: correct_count,
-      score: score
-    }
-    |> Repo.insert!()
+    if reading.question_count != length(answers) do
+      {:error, :invalid_number_of_answers}
+    else
+      {correct_count, score, content} = calculate_score(reading, answers)
 
-    %{score: score}
+    App.Repo.transaction(fn ->
+      Users.update_avg_score(user_id, :reading, score)
+
+      %ReadingResult{
+        content: content,
+        user_id: user_id,
+        reading_id: reading_id,
+        correct_count: correct_count,
+        score: score
+      }
+      |> Repo.insert!()
+    end)
+
+    {:ok, %{score: score}}
+    end
   end
 
   defp calculate_score(test, answers) do
@@ -144,19 +237,33 @@ defmodule App.Tests do
         expected_answer = String.downcase(question.correct_answer)
 
         if given_answer == expected_answer do
-          {correct_count + 1, [%{
+          {correct_count + 1,
+           [
+             %{
                question_id: question_id,
+               question: question.question,
+               part: question.part,
+               answers: question.answers,
                correct_answer: question.correct_answer,
                chosen_answer: answer,
                is_correct: true
-             } | content]}
+             }
+             | content
+           ]}
         else
-          {correct_count, [%{
+          {correct_count,
+           [
+             %{
                question_id: question_id,
+               question: question.question,
+               part: question.part,
+               answers: question.answers,
                correct_answer: question.correct_answer,
                chosen_answer: answer,
                is_correct: false
-             } | content]}
+             }
+             | content
+           ]}
         end
       end)
 
@@ -167,6 +274,7 @@ defmodule App.Tests do
 
   defp get_score(question_count, correct_count) do
     scaled = correct_count / question_count * 40
+
     cond do
       scaled >= 39 -> 9.0
       scaled >= 37 -> 8.5
@@ -179,10 +287,10 @@ defmodule App.Tests do
       scaled >= 16 -> 5.0
       scaled >= 13 -> 4.5
       scaled >= 10 -> 4.0
-      scaled >= 6  -> 3.5
-      scaled >= 3  -> 3.0
-      scaled >= 1  -> 2.5
-      true         -> 2.0
+      scaled >= 6 -> 3.5
+      scaled >= 3 -> 3.0
+      scaled >= 1 -> 2.5
+      true -> 2.0
     end
   end
 end

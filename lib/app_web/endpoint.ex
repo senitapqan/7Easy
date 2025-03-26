@@ -25,7 +25,6 @@ defmodule AppWeb.Endpoint do
     gzip: false,
     only: AppWeb.static_paths()
 
-
   plug CORSPlug, origin: "*"
 
   # Code reloading can be explicitly enabled under the

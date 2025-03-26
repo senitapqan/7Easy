@@ -11,8 +11,7 @@ config :app,
   ecto_repos: [App.Repo],
   generators: [timestamp_type: :utc_datetime]
 
-config :app, App.Repo,
-  migration_timestamps: [type: :utc_datetime_usec]
+config :app, App.Repo, migration_timestamps: [type: :utc_datetime_usec]
 
 config :geminex,
   environment: :sandbox,

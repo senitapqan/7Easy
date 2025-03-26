@@ -26,16 +26,20 @@ defmodule App.GeminiApi.GeminiClient do
   def mark_essay(essay, question) do
     prompt = """
     Evaluate the following IELTS essay based on the question: #{question}.
-    Very importantly, check if the essay is following the question.
     And never answer like "N/A" or "No feedback" and so on.
-    Also write your own essay based on this question.
-    Provide feedback in this structured format:
+
+    Also write your own essay based on this question and my essay. Try to improve my essay.
+    please give score really strictly for my essay. You can easily give 2.0 or 3.0 for my essay.
+    Also consider that minimum count of words in my essay needs to be 250.
+
+    Give answer only in this format. Doesn't matter if I didn't send you any logical essay.
+    Format:
     Score: $$$[Overall Score]$$$
     Grammar: [Feedback on grammar]
     Vocabulary: [Feedback on vocabulary]
     Structure: [Feedback on structure]
     Overall Feedback: [General feedback]
-    AI Essay: ***[Your own essay].***
+    AI Essay: ***[Your own essay].
     Output ONLY the structured feedback. Do not include any additional text or explanations.
     Essay: #{essay}
     """
@@ -43,7 +47,7 @@ defmodule App.GeminiApi.GeminiClient do
     params = %{contents: [%{parts: [%{text: prompt}]}]}
 
     with {:ok, json} <- post(base_url(), params) do
-      {:ok, App.GeminiApi.GeminiParser.parse_essay_mark(json)}
+      App.GeminiApi.GeminiParser.parse_essay_mark(json)
     end
   end
 
