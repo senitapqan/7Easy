@@ -19,11 +19,14 @@ defmodule AppWeb.Router do
   scope "/api" do
     pipe_through [:api, :authenticate]
 
-    post "/profile", AppWeb.UserController, :get_profile
+    get "/profile", AppWeb.UserController, :get_profile
 
-    post "/test", AppWeb.TestController, :get_test
+    get "/tests", AppWeb.TestController, :get_tests
+    get "/test", AppWeb.TestController, :pass_test
+
     post "/test/save", AppWeb.TestController, :save_test
-    post "/test/writing", AppWeb.TestController, :save_writing_test
+
+    get "/test/history", AppWeb.TestController, :get_history
   end
 
   if Application.compile_env(:app, :dev_routes) do

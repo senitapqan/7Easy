@@ -16,8 +16,11 @@ defmodule App.Auth do
       {:ok, user} ->
         {:ok, user.id}
 
-      {:error, error} ->
-        {:error, error}
+      {:error, %Ecto.Changeset{errors: [email: {"has already been taken", _}]}} ->
+        {:error, :email_taken}
+
+      {:error, changeset} ->
+        {:error, changeset}
     end
   end
 

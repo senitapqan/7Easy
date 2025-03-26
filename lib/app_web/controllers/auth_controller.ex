@@ -23,7 +23,7 @@ defmodule AppWeb.AuthController do
         {:error, error} ->
           conn
           |> put_status(401)
-          |> json(%{msg: error})
+          |> json(%{error: error})
       end
     end
   end
@@ -46,7 +46,9 @@ defmodule AppWeb.AuthController do
           json(conn, %{user_id: user_id})
 
         {:error, error} ->
-          json(conn, %{error: error})
+          conn
+          |> put_status(409)
+          |> json(%{error: error})
       end
     end
   end

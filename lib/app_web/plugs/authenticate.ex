@@ -1,5 +1,6 @@
 defmodule AppWeb.Plugs.Authenticate do
   import Plug.Conn
+  import Phoenix.Controller
 
   def init(opts) do
     opts
@@ -16,6 +17,7 @@ defmodule AppWeb.Plugs.Authenticate do
       false ->
         conn
         |> put_status(:unauthorized)
+        |> json(%{error: "Unauthorized"})
         |> halt()
     end
   end

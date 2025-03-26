@@ -5,28 +5,34 @@ defmodule App.Factory do
   alias App.Schemas.Question
   alias App.Schemas.Reading
   alias App.Schemas.User
-  alias App.Schemas.Writing
-
-  defdelegate sequence(name), to: ExMachina
 
   def user_factory do
     %User{
       email: sequence(:email, &"user-#{&1}@example.com"),
-      password: "password123",
-      current_score: 5.0
+      password: "password123"
     }
   end
 
   def reading_test_factory do
     %Reading{
       question_count: 1,
-      titles: ["Title 1"],
-      texts: ["GREAT BRITAIN\n\nLondon is the capital of Great Britain"]
+      titles: ["GREAT BRITAIN"],
+      texts: ["London is the capital of Great Britain"]
+    }
+  end
+
+  def listening_test_factory do
+    %Listening{
+      question_count: 1,
+      titles: ["Part 1"],
+      audio_urls: ["https://example.com/audio.mp3"]
     }
   end
 
   def question_factory() do
     %Question{
+      test_id: nil,
+      test_type: nil,
       question: "What is the capital of Great Britain?",
       answers: ["London", "Paris", "Berlin", "Madrid"],
       correct_answer: "London",
