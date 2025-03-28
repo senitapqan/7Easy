@@ -1,0 +1,9 @@
+# .dockerignore
+config/dev.secret.exs
+
+.env
+
+.git
+
+.gitignore
+

@@ -7,11 +7,11 @@
 # General application configuration
 import Config
 
-config :app,
+config :seven_easy,
   ecto_repos: [App.Repo],
   generators: [timestamp_type: :utc_datetime]
 
-config :app, App.Repo, migration_timestamps: [type: :utc_datetime_usec]
+config :seven_easy, App.Repo, migration_timestamps: [type: :utc_datetime_usec]
 
 config :geminex,
   environment: :sandbox,
@@ -19,7 +19,7 @@ config :geminex,
   api_secret: System.get_env("GEMINI_API_SECRET")
 
 # Configures the endpoint
-config :app, AppWeb.Endpoint,
+config :seven_easy, SevenEasyWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
@@ -37,7 +37,7 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :app, env: config_env()
+config :seven_easy, env: config_env()
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

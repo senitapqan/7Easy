@@ -5,7 +5,7 @@ import Config
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
-config :app, App.Repo,
+config :seven_easy, App.Repo,
   username: "postgres",
   password: "password",
   hostname: "localhost",
@@ -15,7 +15,7 @@ config :app, App.Repo,
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :app, AppWeb.Endpoint,
+config :seven_easy, AppWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "RV6pkcDnVV00+hvTsI/vtKhkrKEF2Ec1STtG9qU77OrG6JK547OnFdT+CGcJapB2",
   server: false

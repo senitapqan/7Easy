@@ -11,7 +11,7 @@ defmodule App.Application do
     children = [
       AppWeb.Telemetry,
       App.Repo,
-      {DNSCluster, query: Application.get_env(:app, :dns_cluster_query) || :ignore},
+      {DNSCluster, query: Application.get_env(:seven_easy, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: App.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: App.Finch},
