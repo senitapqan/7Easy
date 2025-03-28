@@ -3,7 +3,7 @@ defmodule App.MixProject do
 
   def project do
     [
-      app: :app,
+      app: :seven_easy,
       version: "0.1.0",
       elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule App.MixProject do
   def application do
     [
       mod: {App.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :plug_cowboy]
     ]
   end
 
@@ -32,6 +32,7 @@ defmodule App.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:plug_cowboy, "~> 2.6"},
       {:cors_plug, "~> 3.0"},
       {:geminex, "~> 0.1.0"},
       {:req, "~> 0.5.0"},
