@@ -1,7 +1,7 @@
 import Config
 
 # Configure your database
-config :app, App.Repo,
+config :seven_easy, App.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
@@ -17,7 +17,7 @@ config :app, App.Repo,
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
 # Binding to loopback ipv4 address prevents access from other machines.
-config :app, AppWeb.Endpoint,
+config :seven_easy, AppWeb.Endpoint,
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
@@ -50,7 +50,7 @@ config :app, AppWeb.Endpoint,
 # different ports.
 
 # Enable dev routes for dashboard and mailbox
-config :app, dev_routes: true
+config :seven_easy, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

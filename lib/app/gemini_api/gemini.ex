@@ -4,7 +4,7 @@ defmodule App.GeminiApi.Gemini do
 
   defp impl do
     Application.get_env(
-      :app,
+      :seven_easy,
       :gemini_client,
       App.GeminiApi.GeminiClient
     )
