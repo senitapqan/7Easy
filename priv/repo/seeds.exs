@@ -5,6 +5,7 @@ alias App.Schemas.User
 
 defmodule App.Seeds do
   alias App.Schemas.Listening
+  alias App.Schemas.SpeakingQuestion
 
   def run do
     load_users()
@@ -12,6 +13,7 @@ defmodule App.Seeds do
     load_reading_questions()
     load_listening_tests()
     load_listening_questions()
+    load_speaking_questions()
   end
 
   defp load_users do
@@ -42,6 +44,12 @@ defmodule App.Seeds do
     File.read!("priv/repo/seeds/listening_questions.json")
     |> Jason.decode!()
     |> insert_listening_questions()
+  end
+
+  defp load_speaking_questions do
+    File.read!("priv/repo/seeds/speaking_questions.json")
+    |> Jason.decode!()
+    |> insert_speaking_questions()
   end
 
   defp insert_users(users) do
@@ -122,6 +130,20 @@ defmodule App.Seeds do
           part: question["part"],
           test_type: question["test_type"],
           test_id: question["test_id"]
+        }
+        |> Repo.insert!()
+      end
+    end)
+  end
+
+  defp insert_speaking_questions(questions) do
+    Enum.each(questions, fn question ->
+      unless Repo.get_by(SpeakingQuestion, question: question["question"]) do
+        %SpeakingQuestion{
+          question: question["question"],
+          sub_question: question["sub_question"],
+          part: question["part"],
+          test_type: question["test_type"]
         }
         |> Repo.insert!()
       end

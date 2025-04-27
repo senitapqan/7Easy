@@ -1,6 +1,5 @@
 defmodule App.Tests do
-  alias App.Schemas.WritingResult
-  alias App.GeminiApi.Gemini
+  alias App.OpenAi.Gpt
   alias App.Parser.ListeningParser
   alias App.Parser.ReadingParser
   alias App.Parser.WritingParser
@@ -11,6 +10,7 @@ defmodule App.Tests do
   alias App.Schemas.Reading
   alias App.Schemas.ReadingResult
   alias App.Schemas.Writing
+  alias App.Schemas.WritingResult
   alias App.Users
 
   require Ecto.Query
@@ -76,7 +76,7 @@ defmodule App.Tests do
   end
 
   def pass_writing_test(nil) do
-    {:ok, writing} = Gemini.generate_essay()
+    {:ok, writing} = Gpt.generate_essay()
 
     writing
     |> Repo.insert!()
@@ -91,8 +91,7 @@ defmodule App.Tests do
         {:error, :test_not_found}
 
       test ->
-        test
-        |> WritingParser.parse_test()
+        WritingParser.parse_test(test)
     end
   end
 
@@ -118,7 +117,8 @@ defmodule App.Tests do
     WritingResult
     |> Repo.get_by(user_id: user_id, id: writing_result_id)
     |> case do
-      nil -> {:error, :user_didnt_pass_test}
+      nil ->
+        {:error, :user_didnt_pass_test}
 
       result ->
         result
@@ -131,7 +131,8 @@ defmodule App.Tests do
     ListeningResult
     |> Repo.get_by(user_id: user_id, id: listening_result_id)
     |> case do
-      nil -> {:error, :user_didnt_pass_test}
+      nil ->
+        {:error, :user_didnt_pass_test}
 
       result ->
         result
@@ -144,7 +145,8 @@ defmodule App.Tests do
     ReadingResult
     |> Repo.get_by(user_id: user_id, id: reading_result_id)
     |> case do
-      nil -> {:error, :user_didnt_pass_test}
+      nil ->
+        {:error, :user_didnt_pass_test}
 
       result ->
         result
@@ -185,21 +187,21 @@ defmodule App.Tests do
     else
       {correct_count, score, content} = calculate_score(listening, answers)
 
-    App.Repo.transaction(fn ->
-      Users.update_avg_score(user_id, :listening, score)
+      App.Repo.transaction(fn ->
+        Users.update_avg_score(user_id, :listening, score)
 
-      %ListeningResult{
-        content: content,
-        user_id: user_id,
-        listening_id: listening_id,
-        correct_count: correct_count,
-        score: score
-      }
-      |> Repo.insert!()
-    end)
+        %ListeningResult{
+          content: content,
+          user_id: user_id,
+          listening_id: listening_id,
+          correct_count: correct_count,
+          score: score
+        }
+        |> Repo.insert!()
+      end)
 
-    {:ok, %{score: score}}
-  end
+      {:ok, %{score: score}}
+    end
   end
 
   def save_reading_test(user_id, reading_id, answers) do
@@ -210,20 +212,20 @@ defmodule App.Tests do
     else
       {correct_count, score, content} = calculate_score(reading, answers)
 
-    App.Repo.transaction(fn ->
-      Users.update_avg_score(user_id, :reading, score)
+      App.Repo.transaction(fn ->
+        Users.update_avg_score(user_id, :reading, score)
 
-      %ReadingResult{
-        content: content,
-        user_id: user_id,
-        reading_id: reading_id,
-        correct_count: correct_count,
-        score: score
-      }
-      |> Repo.insert!()
-    end)
+        %ReadingResult{
+          content: content,
+          user_id: user_id,
+          reading_id: reading_id,
+          correct_count: correct_count,
+          score: score
+        }
+        |> Repo.insert!()
+      end)
 
-    {:ok, %{score: score}}
+      {:ok, %{score: score}}
     end
   end
 

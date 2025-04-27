@@ -8,7 +8,7 @@ defmodule App.Users do
   def create_user(attrs) do
     %User{}
     |> User.changeset(attrs)
-    |> App.Repo.insert()
+    |> Repo.insert()
   end
 
   def get_user(user_id, opts \\ []) do

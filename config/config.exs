@@ -7,24 +7,32 @@
 # General application configuration
 import Config
 
+config :goth, json: File.read!("/Users/senitapqan/Desktop/elixir/7Easy/config/credentials/speech_to_text.json")
+
 config :seven_easy,
   ecto_repos: [App.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 config :seven_easy, App.Repo, migration_timestamps: [type: :utc_datetime_usec]
 
-config :geminex,
-  environment: :sandbox,
-  api_key: System.get_env("GEMINI_API_KEY"),
-  api_secret: System.get_env("GEMINI_API_SECRET")
+config :ex_aws,
+  access_key_id: [{:system, "AWS_ACCESS_KEY_ID"}, {:awscli, "default", 30}, :instance_role],
+  secret_access_key: [
+    {:system, "AWS_SECRET_ACCESS_KEY"},
+    {:awscli, "default", 30},
+    :instance_role
+  ],
+  awscli_auth_adapter: ExAws.STS.AuthCache.AssumeRoleWebIdentityAdapter,
+  region: {:system, "AWS_REGION"},
+  json_codec: Jason,
+  http_client: App.ReqAwsClient
 
 # Configures the endpoint
 config :seven_easy, SevenEasyWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [json: AppWeb.ErrorJSON],
-    layout: false
+    formats: [json: AppWeb.ErrorJSON]
   ],
   pubsub_server: App.PubSub,
   live_view: [signing_salt: "KVEqOQN/"]

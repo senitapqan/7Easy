@@ -38,8 +38,7 @@ defmodule AppWeb do
   def controller do
     quote do
       use Phoenix.Controller,
-        formats: [:html, :json],
-        layouts: [html: AppWeb.Layouts]
+        formats: [:json]
 
       import Plug.Conn
 

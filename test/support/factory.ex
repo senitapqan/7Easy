@@ -1,4 +1,8 @@
 defmodule App.Factory do
+  alias App.Schemas.Speaking
+  alias App.Schemas.SpeakingQuestion
+  alias App.Schemas.SpeakingTestQuestion
+
   use ExMachina.Ecto, repo: App.Repo
 
   alias App.Schemas.Listening
@@ -10,6 +14,29 @@ defmodule App.Factory do
     %User{
       email: sequence(:email, &"user-#{&1}@example.com"),
       password: "password123"
+    }
+  end
+
+  def speaking_test_factory do
+    %Speaking{
+      status: "started",
+      user_id: user_factory().id
+    }
+  end
+
+  def speaking_question_factory do
+    %SpeakingQuestion{
+      question: "What is the capital of Great Britain?",
+      part: 1,
+      test_type: "speaking",
+      sub_question: []
+    }
+  end
+
+  def speaking_test_question_factory do
+    %SpeakingTestQuestion{
+      speaking_id: speaking_test_factory().id,
+      speaking_question_id: speaking_question_factory().id
     }
   end
 

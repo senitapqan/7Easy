@@ -19,7 +19,7 @@ defmodule App.MixProject do
   def application do
     [
       mod: {App.Application, []},
-      extra_applications: [:logger, :runtime_tools, :plug_cowboy]
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
@@ -32,7 +32,6 @@ defmodule App.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:plug_cowboy, "~> 2.6"},
       {:cors_plug, "~> 3.0"},
       {:geminex, "~> 0.1.0"},
       {:req, "~> 0.5.0"},
@@ -48,12 +47,16 @@ defmodule App.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:recode, "~> 0.7", only: [:dev, :test]},
-      {:uuidv7, "~> 1.0"},
       {:drops, "~> 0.2"},
       {:bcrypt_elixir, "~> 3.0"},
       {:joken, "~> 2.6"},
       {:ex_machina, "~> 2.8.0", only: :test},
-      {:dotenv_parser, "~> 2.0", only: [:dev, :test]}
+      {:dotenv_parser, "~> 2.0", only: [:dev, :test]},
+      {:mox, "~> 1.2", only: :test},
+      {:ex_aws, "~> 2.4"},
+      {:ex_aws_s3, "~> 2.3"},
+      {:goth, "~> 1.4"},
+      {:sweet_xml, "~> 0.7"}
     ]
   end
 

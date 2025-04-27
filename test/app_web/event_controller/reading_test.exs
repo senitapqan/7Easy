@@ -1,6 +1,5 @@
 defmodule AppWeb.EventController.ReadingTestTest do
   use AppWeb.ConnCase
-  import App.Factory
 
   alias App.Repo
   alias App.Schemas.ReadingResult
@@ -60,7 +59,7 @@ defmodule AppWeb.EventController.ReadingTestTest do
   end
 
   def do_request(conn, "post", path, params) do
-    post(conn, path, params)
+    post conn, path, params
   end
 
   test "get tests", %{token: token} do
@@ -96,7 +95,7 @@ defmodule AppWeb.EventController.ReadingTestTest do
 
   test "returns history", %{token: token, params: params} do
     request(token, "post", "/api/test/save", params)
-    response = request(token, "get", "/api/test/history?type=reading&test_id=#{params.test_id}")
+    response = request(token, "get", "/api/test/history?type=reading&result_id=#{params.test_id}")
     assert response.status == 200
     dbg(Jason.decode!(response.resp_body))
   end

@@ -1,6 +1,5 @@
 defmodule AppWeb.AuthControllerTest.SignInTest do
   use AppWeb.ConnCase
-  import App.Factory
 
   def do_request(params \\ %{}) do
     params =

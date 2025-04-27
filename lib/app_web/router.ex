@@ -27,6 +27,13 @@ defmodule AppWeb.Router do
     post "/test/save", AppWeb.TestController, :save_test
 
     get "/test/history", AppWeb.TestController, :get_history
+
+    scope "/speaking" do
+      get "/start", AppWeb.SpeakingController, :start_speaking
+      get "/history", AppWeb.SpeakingController, :history
+      post "/continue", AppWeb.SpeakingController, :continue_speaking
+      post "/save", AppWeb.SpeakingController, :save_speaking
+    end
   end
 
   if Application.compile_env(:seven_easy, :dev_routes) do

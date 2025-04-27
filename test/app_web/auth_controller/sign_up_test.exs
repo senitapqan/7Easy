@@ -1,6 +1,5 @@
 defmodule AppWeb.AuthControllerTest do
   use AppWeb.ConnCase
-  import App.Factory
 
   alias App.Schemas.User
 
@@ -10,9 +9,12 @@ defmodule AppWeb.AuthControllerTest do
       password: "password"
     }
 
-    build_conn()
-    |> put_req_header("accept", "application/json")
-    |> post("/auth/sign_up", params)
+    conn =
+      put_req_header(build_conn(), "accept", "application/json")
+
+    response = post conn, "/auth/sign_up", params
+
+    response
   end
 
   test "returns 200" do

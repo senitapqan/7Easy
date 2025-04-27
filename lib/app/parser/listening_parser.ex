@@ -60,17 +60,21 @@ defmodule App.Parser.ListeningParser do
             )
           )
 
-        results = Enum.map(results, fn result ->
-          %{
-            score: result.score,
-            passed_time: result.inserted_at
-          }
-        end)
+        results =
+          Enum.map(results, fn result ->
+            %{
+              score: result.score,
+              passed_time: result.inserted_at
+            }
+          end)
 
         {passed, score, passed_time} =
           case results do
-            [] -> {false, nil, nil}
-            results -> {true, Enum.max_by(results, & &1.score).score, Enum.max_by(results, & &1.passed_time).passed_time}
+            [] ->
+              {false, nil, nil}
+
+            results ->
+              {true, Enum.max_by(results, & &1.score).score, Enum.max_by(results, & &1.passed_time).passed_time}
           end
 
         %{

@@ -64,13 +64,16 @@ defmodule AppWeb.TestController do
 
         case type do
           "listening" ->
-            handle_result(conn, Tests.pull_listening_history(user_id, result_id), [user_id: user_id, result_id: result_id])
+            handle_result(conn, Tests.pull_listening_history(user_id, result_id),
+              user_id: user_id,
+              result_id: result_id
+            )
 
           "reading" ->
-            handle_result(conn, Tests.pull_reading_history(user_id, result_id), [user_id: user_id, result_id: result_id])
+            handle_result(conn, Tests.pull_reading_history(user_id, result_id), user_id: user_id, result_id: result_id)
 
           "writing" ->
-            handle_result(conn, Tests.pull_writing_history(user_id, result_id), [user_id: user_id, result_id: result_id])
+            handle_result(conn, Tests.pull_writing_history(user_id, result_id), user_id: user_id, result_id: result_id)
 
           _ ->
             conn
@@ -115,6 +118,11 @@ defmodule AppWeb.TestController do
 
         "writing" ->
           handle_result(conn, Tests.save_writing_test(user_id, params.test_id, params.essay), user_id: user_id)
+
+        _ ->
+          conn
+          |> put_status(422)
+          |> json(%{error: "Invalid test type"})
       end
     else
       {:error, error} ->
@@ -153,6 +161,11 @@ defmodule AppWeb.TestController do
         conn
         |> put_status(404)
         |> json(%{error: "Test with given id not found. id: #{test_id}"})
+
+      {:error, error} ->
+        conn
+        |> put_status(500)
+        |> json(%{error: "Internal server error", details: inspect(error)})
     end
   end
 
@@ -169,21 +182,14 @@ defmodule AppWeb.TestController do
       {:error, error} ->
         {:error, error}
     end
-
   end
 
-  defp check_variables(values, variables) do
+  defp check_variables(values, _variables) do
     type = values["type"]
 
-    dbg(variables)
-    dbg(values)
-
     cond do
-      type == "writing" && Enum.find(values, fn {k, _} -> k == "test_id" end) ->
-        {:ok, values}
-
-      Enum.any?(values, fn {_, value} -> value == nil end) ->
-        {:error, "Missing some of variables: #{inspect(values)}"}
+      type not in ["listening", "reading", "writing"] ->
+        {:error, "Invalid test type"}
 
       true ->
         {:ok, values}

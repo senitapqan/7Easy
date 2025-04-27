@@ -18,7 +18,10 @@ config :seven_easy, App.Repo,
 config :seven_easy, AppWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "RV6pkcDnVV00+hvTsI/vtKhkrKEF2Ec1STtG9qU77OrG6JK547OnFdT+CGcJapB2",
-  server: false
+  server: false,
+  render_errors: [
+    formats: [json: AppWeb.ErrorJSON]
+  ]
 
 # Print only warnings and errors during test
 config :logger, level: :warning
