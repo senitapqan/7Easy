@@ -7,8 +7,6 @@
 # General application configuration
 import Config
 
-config :goth, json: File.read!("/Users/senitapqan/Desktop/elixir/7Easy/config/credentials/speech_to_text.json")
-
 config :seven_easy,
   ecto_repos: [App.Repo],
   generators: [timestamp_type: :utc_datetime]
