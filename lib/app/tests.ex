@@ -47,6 +47,10 @@ defmodule App.Tests do
     |> Repo.preload(preload)
   end
 
+  def get_questions(id, type) do
+    Repo.all(Ecto.Query.from(q in Question, where: q.test_id == ^id and q.test_type == ^type))
+  end
+
   def pass_reading_test(test_id) do
     Reading
     |> Repo.get(test_id)
@@ -55,9 +59,10 @@ defmodule App.Tests do
         {:error, :test_not_found}
 
       test ->
-        test
-        |> Repo.preload(:questions)
-        |> ReadingParser.parse_test()
+        questions = get_questions(test_id, "reading")
+        test = %{test | questions: questions}
+
+        ReadingParser.parse_test(test)
     end
   end
 
@@ -69,9 +74,11 @@ defmodule App.Tests do
         {:error, :test_not_found}
 
       test ->
-        test
-        |> Repo.preload(:questions)
-        |> ListeningParser.parse_test()
+        questions = get_questions(test_id, "listening")
+        dbg(questions)
+        test = %{test | questions: questions}
+
+        ListeningParser.parse_test(test)
     end
   end
 

@@ -13,6 +13,8 @@ defmodule App.Speaking.StartSpeaking do
         user_id: user_id
       })
 
+    IO.inspect(speaking)
+
     questions_part_1 = get_random_questions_first_part()
     questions_part_2 = get_random_questions_second_part()
 

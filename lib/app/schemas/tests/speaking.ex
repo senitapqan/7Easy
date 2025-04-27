@@ -1,5 +1,5 @@
 defmodule App.Schemas.Speaking do
-  use Ecto.Schema
+  use App.Schema
 
   alias App.Schemas.SpeakingQuestion
   alias App.Schemas.SpeakingResult

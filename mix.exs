@@ -55,7 +55,8 @@ defmodule App.MixProject do
       {:mox, "~> 1.2", only: :test},
       {:ex_aws, "~> 2.4"},
       {:ex_aws_s3, "~> 2.3"},
-      {:sweet_xml, "~> 0.7"}
+      {:sweet_xml, "~> 0.7"},
+      {:plug_cowboy, "~> 2.5", only: :dev}
     ]
   end
 
