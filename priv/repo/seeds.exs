@@ -95,7 +95,8 @@ defmodule App.Seeds do
         %Reading{
           titles: test["titles"],
           texts: test["texts"],
-          question_count: test["question_count"]
+          question_count: test["question_count"],
+          id: test["id"]
         }
         |> Repo.insert!()
       end
@@ -141,7 +142,7 @@ defmodule App.Seeds do
       unless Repo.get_by(SpeakingQuestion, question: question["question"]) do
         %SpeakingQuestion{
           question: question["question"],
-          sub_question: question["sub_question"],
+          sub_questions: question["sub_questions"],
           part: question["part"],
           test_type: question["test_type"]
         }

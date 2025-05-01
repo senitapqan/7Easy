@@ -278,5 +278,325 @@
         "part": 3,
         "test_type": "reading",
         "test_id": 1
+    },
+    {
+        "question": "Conducted poll in December says that most Americans are __________ with the way that things are going.",
+        "answers": [],
+        "correct_answer": "Angry",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Many people are angrier than a year ago, particulary __________.",
+        "answers": [],
+        "correct_answer": "Republicans",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "The economical rates are decreasing, even though the country has recovered from the __________.",
+        "answers": [],
+        "correct_answer": "Recession",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Billionaires and immigrants are the two sides of one political __________.",
+        "answers": [],
+        "correct_answer": "Coin",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "It is expected that the __________ will be the biggest ethnic group to move in the USA by the year 2055.",
+        "answers": [],
+        "correct_answer": "Asians",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "It has been an era of demographic, racial, cultural, religious and __________ change.",
+        "answers": [],
+        "correct_answer": "Generational",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Roberto Suro says that migrants might become a __________ of anger.",
+        "answers": [],
+        "correct_answer": "Target",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Six to ten Americans believe that government has too much __________.",
+        "answers": [],
+        "correct_answer": "Power",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "The Congress has more responsibilities now than in 1970s.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "William Galston believes that the appeal of Donald Trump and Bernie Sanders is growing bigger each day.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "NOT GIVEN",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Ted Cruz is running as an anti-establishment candidate.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "The number of Americans who think that the US \"stands above all other countries in the world\" increased by 10% in 2014 compared to 2012.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "FALSE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Since 9/11 there's been a feeling of war in America and it's still here.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "The Americans had the same reaction to the San Bernardino shooting as French to the Paris attacks.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "FALSE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "The ideological diversity between the Democrats and the Republicans is stronger than ever now.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "The pragmatic mass consists of a lot of young people.",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 1,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Possible damage _____",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+        "correct_answer": "D",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Shocking news _____",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+        "correct_answer": "A",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Mix of different studies _____",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+        "correct_answer": "F",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Misleading information _____",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+        "correct_answer": "C",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Types of e-cigarettes _____",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+        "correct_answer": "E",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "A place where the controversial research was written _____",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H", "I"], 
+        "correct_answer": "B",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "The defence of the article _____",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+        "correct_answer": "I",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "A research by an e-cigarette industry _____",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+        "correct_answer": "H",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "The consistent evidence _____",
+        "answers": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+        "correct_answer": "G",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "New controversial research suggests that e-cigarettes _____",
+        "answers": ["make it easier to quit smoking", "make it harder to quit smoking", "don't play a major role in quitting smoking", "the research doen't answer this question"],
+        "correct_answer": "make it harder to quit smoking",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Ann McNeill critisized the research because _____",
+        "answers": ["the majority of other researches disagree with this review", "the definition of e-cigarettes is a bit loose", "some information is either inaccurate or misleading", "the analysis mashed together some very different studies"],
+        "correct_answer": "some information is either inaccurate or misleading", 
+        "part": 2, 
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "This article aims at _____",
+        "answers": ["finding the truth about e-cigarettes, providing facts", "showing that the e-cigarettes are worthless", "promoting the use of e-cigarettes", "analyzing different scientific researches"],
+        "correct_answer": "finding the truth about e-cigarettes, providing facts",
+        "part": 2,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Called a debate on the issue _____", 
+        "answers": ["Stevie Wise", "Mark Billige", "Jemima Olchawski", "Nobody from the above"],
+        "correct_answer": "Nobody from the above",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Launched the petition _____",
+        "answers": ["Stevie Wise", "Mark Billige", "Jemima Olchawski", "Nobody from the above"],
+        "correct_answer": "Stevie Wise",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "States that women are willing to pay more _____",
+        "answers": ["Stevie Wise", "Mark Billige", "Jemima Olchawski", "Nobody from the above"],
+        "correct_answer": "Mark Billige",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Says that women are more careful shoppers than men _____",
+        "answers": ["Stevie Wise", "Mark Billige", "Jemima Olchawski", "Nobody from the above"],
+        "correct_answer": "Nobody from the above",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Says that companies should keep in mind gender equality while making products _____",
+        "answers": ["Stevie Wise", "Mark Billige", "Jemima Olchawski", "Nobody from the above"],
+        "correct_answer": "Jemima Olchawski",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Was told that there are many problems with prices, especially with toys and clothes _____",
+        "answers": ["Stevie Wise", "Mark Billige", "Jemima Olchawski", "Nobody from the above"],
+        "correct_answer": "Stevie Wise",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "States that women are getting ripped off twice _____",
+        "answers": ["Stevie Wise", "Mark Billige", "Jemima Olchawski", "Nobody from the above"],
+        "correct_answer": "Jemima Olchawski",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Pink tax means that women are being charged more than men for the same products _____",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "Due to the fact that the petition gathered more than 43,000 signatures the issue has been raised in Parliament _____",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "NOT GIVEN",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "After comparing the prices of 800 products., it was concluded that women's versions were 7% more expensive than men's _____",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "It is hard for the retailers to pretend that the gender price gap is an innocent mistake _____",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "FALSE",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
+    },
+    {
+        "question": "If male and female products are situated in different sections, it makes it harder to examine the prices _____",
+        "answers": ["TRUE", "FALSE", "NOT GIVEN"],
+        "correct_answer": "TRUE",
+        "part": 3,
+        "test_type": "reading",
+        "test_id": 2
     }
 ]

@@ -10,7 +10,9 @@ defmodule App.Schemas.SpeakingResult do
 
     field :score, :float
     field :content, {:array, :map}
-    field :comment, :string
+    field :strengths, :string
+    field :areas_for_improvement, :string
+    field :recommendations, :string
 
     timestamps()
   end

@@ -3,6 +3,7 @@ defmodule App.Schemas.User do
 
   alias App.Schemas.ListeningResult
   alias App.Schemas.ReadingResult
+  alias App.Schemas.SpeakingResult
   alias App.Schemas.WritingResult
 
   import Ecto.Changeset
@@ -19,6 +20,7 @@ defmodule App.Schemas.User do
     has_many :listening_results, ListeningResult
     has_many :reading_results, ReadingResult
     has_many :writing_results, WritingResult
+    has_many :speaking_results, SpeakingResult
 
     timestamps()
   end

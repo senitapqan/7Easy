@@ -12,7 +12,8 @@ defmodule App.Parser.ProfileParser do
       results:
         parse_listening_results(user.listening_results) ++
           parse_reading_results(user.reading_results) ++
-          parse_writing_results(user.writing_results)
+          parse_writing_results(user.writing_results) ++
+          parse_speaking_results(user.speaking_results)
     }
   end
 
@@ -56,6 +57,17 @@ defmodule App.Parser.ProfileParser do
       %{
         test_id: result.writing_id,
         test_type: "writing",
+        score: result.score,
+        taken_at: result.inserted_at
+      }
+    end)
+  end
+
+  defp parse_speaking_results(results) do
+    Enum.map(results, fn result ->
+      %{
+        test_id: result.speaking_id,
+        test_type: "speaking",
         score: result.score,
         taken_at: result.inserted_at
       }

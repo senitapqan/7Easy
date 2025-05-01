@@ -25,13 +25,13 @@ defmodule App.Users do
   def get_profile(user_id) do
     User
     |> Repo.get(user_id)
-    |> Repo.preload([:listening_results, :reading_results, :writing_results])
+    |> Repo.preload([:listening_results, :reading_results, :writing_results, :speaking_results])
     |> ProfileParser.parse_profile()
   end
 
   def update_avg_score(user_id, :writing, score) do
     user = get_user(user_id, preload: :writing_results)
-    results = user.writing_results
+    results = user.writing_results || []
     results_count = length(results)
 
     avg_score = user.avg_writing_score || 0
@@ -44,7 +44,7 @@ defmodule App.Users do
 
   def update_avg_score(user_id, :reading, score) do
     user = get_user(user_id, preload: :reading_results)
-    results = user.reading_results
+    results = user.reading_results || []
     results_count = length(results)
 
     avg_score = user.avg_reading_score || 0
@@ -57,7 +57,7 @@ defmodule App.Users do
 
   def update_avg_score(user_id, :listening, score) do
     user = get_user(user_id, preload: :listening_results)
-    results = user.listening_results
+    results = user.listening_results || []
     results_count = length(results)
 
     avg_score = user.avg_listening_score || 0
@@ -65,6 +65,19 @@ defmodule App.Users do
 
     user
     |> change(%{avg_listening_score: new_avg_score})
+    |> Repo.update!()
+  end
+
+  def update_avg_score(user_id, :speaking, score) do
+    user = get_user(user_id, preload: :speaking_results)
+    results = user.speaking_results || []
+    results_count = length(results)
+
+    avg_score = user.avg_speaking_score || 0
+    new_avg_score = (avg_score * results_count + score) / (results_count + 1)
+
+    user
+    |> change(%{avg_speaking_score: new_avg_score})
     |> Repo.update!()
   end
 end

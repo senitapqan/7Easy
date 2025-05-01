@@ -13,13 +13,15 @@ defmodule App.Speaking.StartSpeaking do
         user_id: user_id
       })
 
-    IO.inspect(speaking)
-
     questions_part_1 = get_random_questions_first_part()
     questions_part_2 = get_random_questions_second_part()
 
     SpeakingContext.insert_questions_to_speaking(speaking.id, [questions_part_2 | questions_part_1])
-    speaking = SpeakingContext.get_speaking_test!(speaking.id, preload: [:speaking_questions, :user])
+    speaking = SpeakingContext.get_speaking_test(speaking.id, preload: [:speaking_questions, :user])
+
+    SpeakingContext.update_speaking!(speaking, %{
+      question_count: length(questions_part_1) + 1
+    })
 
     {:ok, SpeakingParser.parse_speaking_test(speaking, part_3: false)}
   end
@@ -28,7 +30,7 @@ defmodule App.Speaking.StartSpeaking do
     SpeakingQuestion
     |> where([q], q.part == 1)
     |> order_by(fragment("RANDOM()"))
-    |> limit(3)
+    |> limit(2)
     |> Repo.all()
   end
 

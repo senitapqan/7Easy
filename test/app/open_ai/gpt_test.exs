@@ -33,14 +33,17 @@ defmodule App.OpenAi.GptTest do
       question1 = File.read!("test/support/fixtures/speaking/question1.txt")
       question2 = File.read!("test/support/fixtures/speaking/question2.txt")
       question3 = File.read!("test/support/fixtures/speaking/question3.txt")
+      sub_question1 = File.read!("test/support/fixtures/speaking/sub_question_1.txt")
+      sub_question2 = File.read!("test/support/fixtures/speaking/sub_question_2.txt")
+      sub_question3 = File.read!("test/support/fixtures/speaking/sub_question_3.txt")
       answer1 = File.read!("test/support/fixtures/speaking/answer1.txt")
       answer2 = File.read!("test/support/fixtures/speaking/answer2.txt")
       answer3 = File.read!("test/support/fixtures/speaking/answer3.txt")
 
       content = [
-        %{question: question1, answer: answer1},
-        %{question: question2, answer: answer2},
-        %{question: question3, answer: answer3}
+        %{question: question1, answer: answer1, sub_questions: []},
+        %{question: question2, answer: answer2, sub_questions: []},
+        %{question: question3, answer: answer3, sub_questions: [sub_question1, sub_question2, sub_question3]}
       ]
 
       assert {:ok, [%SpeakingQuestion{} | _] = result} = App.OpenAi.Gpt.generate_speaking_question(content)
@@ -51,6 +54,9 @@ defmodule App.OpenAi.GptTest do
       question1 = File.read!("test/support/fixtures/speaking/question1.txt")
       question2 = File.read!("test/support/fixtures/speaking/question2.txt")
       question3 = File.read!("test/support/fixtures/speaking/question3.txt")
+      sub_question1 = File.read!("test/support/fixtures/speaking/sub_question_1.txt")
+      sub_question2 = File.read!("test/support/fixtures/speaking/sub_question_2.txt")
+      sub_question3 = File.read!("test/support/fixtures/speaking/sub_question_3.txt")
       question4 = File.read!("test/support/fixtures/speaking/question4.txt")
       question5 = File.read!("test/support/fixtures/speaking/question5.txt")
       answer1 = File.read!("test/support/fixtures/speaking/answer1.txt")
@@ -60,11 +66,11 @@ defmodule App.OpenAi.GptTest do
       answer5 = File.read!("test/support/fixtures/speaking/answer5.txt")
 
       content = [
-        %{question: question1, answer: answer1},
-        %{question: question2, answer: answer2},
-        %{question: question3, answer: answer3},
-        %{question: question4, answer: answer4},
-        %{question: question5, answer: answer5}
+        %{question: question1, answer: answer1, sub_questions: []},
+        %{question: question2, answer: answer2, sub_questions: []},
+        %{question: question3, answer: answer3, sub_questions: [sub_question1, sub_question2, sub_question3]},
+        %{question: question4, answer: answer4, sub_questions: []},
+        %{question: question5, answer: answer5, sub_questions: []}
       ]
 
       assert {:ok, result} = App.OpenAi.Gpt.mark_speaking_test(content)

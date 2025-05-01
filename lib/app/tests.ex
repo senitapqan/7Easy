@@ -75,7 +75,6 @@ defmodule App.Tests do
 
       test ->
         questions = get_questions(test_id, "listening")
-        dbg(questions)
         test = %{test | questions: questions}
 
         ListeningParser.parse_test(test)
@@ -166,7 +165,7 @@ defmodule App.Tests do
     writing = get_writing_test(writing_id)
     question = writing.task
 
-    case Gemini.mark_essay(essay, question) do
+    case Gpt.mark_essay(essay, question) do
       {:ok, writing_result} ->
         {:ok, writing_result} =
           App.Repo.transaction(fn ->

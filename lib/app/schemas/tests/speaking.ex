@@ -8,6 +8,7 @@ defmodule App.Schemas.Speaking do
 
   schema "speaking_tests" do
     field :status, :string
+    field :question_count, :integer
     belongs_to :user, User
 
     has_many :speaking_results, SpeakingResult

@@ -1,11 +1,10 @@
 defmodule App.Assembly.SpeechToText do
   defp impl do
-    t =
-      Application.get_env(
-        :seven_easy,
-        :speech_to_text_client,
-        App.Assembly.SpeechToTextClient
-      )
+    Application.get_env(
+      :seven_easy,
+      :speech_to_text_client,
+      App.Assembly.SpeechToTextClient
+    )
   end
 
   @callback recognize(%Plug.Upload{path: String.t()}) ::

@@ -8,7 +8,9 @@ defmodule App.Repo.Migrations.CreateSpeakingResults do
 
       add :score, :float
       add :content, {:array, :map}
-      add :comment, :text
+      add :strengths, :text
+      add :areas_for_improvement, :text
+      add :recommendations, :text
 
       timestamps()
     end

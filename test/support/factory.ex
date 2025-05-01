@@ -1,6 +1,7 @@
 defmodule App.Factory do
   alias App.Schemas.Speaking
   alias App.Schemas.SpeakingQuestion
+  alias App.Schemas.SpeakingResult
   alias App.Schemas.SpeakingTestQuestion
 
   use ExMachina.Ecto, repo: App.Repo
@@ -20,6 +21,7 @@ defmodule App.Factory do
   def speaking_test_factory do
     %Speaking{
       status: "started",
+      question_count: 0,
       user_id: user_factory().id
     }
   end
@@ -29,7 +31,7 @@ defmodule App.Factory do
       question: "What is the capital of Great Britain?",
       part: 1,
       test_type: "speaking",
-      sub_question: []
+      sub_questions: []
     }
   end
 
@@ -37,6 +39,18 @@ defmodule App.Factory do
     %SpeakingTestQuestion{
       speaking_id: speaking_test_factory().id,
       speaking_question_id: speaking_question_factory().id
+    }
+  end
+
+  def speaking_result_factory do
+    %SpeakingResult{
+      speaking_id: speaking_test_factory().id,
+      user_id: user_factory().id,
+      content: [],
+      score: 0,
+      strengths: "",
+      areas_for_improvement: "",
+      recommendations: ""
     }
   end
 

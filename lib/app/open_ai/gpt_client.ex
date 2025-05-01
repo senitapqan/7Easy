@@ -129,8 +129,15 @@ defmodule App.OpenAi.GptClient do
   end
 
   defp format_content(content) do
-    Enum.map_join(content, "\n\n", fn %{question: question, answer: answer} ->
-      "Q: #{question}\nA: #{answer}"
+    Enum.map_join(content, "\n\n", fn %{question: question, transcript: answer, sub_questions: sub_questions} ->
+      case sub_questions do
+        [] ->
+          "Q: #{question}\nA: #{answer}"
+
+        _ ->
+          merged_sub_questions = Enum.map_join(sub_questions, "\n", fn sub_question -> "#{sub_question}" end)
+          "Q: #{question}\n#{merged_sub_questions}\nA: #{answer}"
+      end
     end)
   end
 

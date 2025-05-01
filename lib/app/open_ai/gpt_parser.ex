@@ -32,7 +32,7 @@ defmodule App.OpenAi.GptParser do
 
       {:ok,
        Enum.map(questions, fn question ->
-         %SpeakingQuestion{question: question}
+         %SpeakingQuestion{question: question, part: 3, test_type: "speaking", sub_questions: []}
        end)}
     end
   end

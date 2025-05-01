@@ -6,7 +6,7 @@ defmodule App.Schemas.SpeakingQuestion do
 
   schema "speaking_questions" do
     field :question, :string
-    field :sub_question, {:array, :string}
+    field :sub_questions, {:array, :string}
     field :part, :integer
     field :test_type, :string
 

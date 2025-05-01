@@ -50,28 +50,46 @@ defmodule AppWeb.SpeakingController do
       embeds_many :answers, AnswerSchema
     end
 
-    def changeset(attrs) do
+    def validate_and_apply(attrs) do
+      case changeset(attrs) do
+        %{valid?: true} = changeset ->
+          {:ok, apply_changes(changeset) |> deep_map()}
+
+        %{valid?: false} ->
+          {:error, :invalid_params}
+      end
+    end
+
+    defp changeset(attrs) do
       %SpeakingContract{}
       |> cast(attrs, [:test_type, :speaking_id])
       |> cast_embed(:answers, with: &AnswerSchema.changeset/2)
       |> validate_required([:test_type, :speaking_id])
-      |> case do
-        %{valid?: true} = changeset ->
-          {:ok, changeset}
-
-        %{valid?: false} = changeset ->
-          {:error, :invalid_params}
-      end
     end
+
+    defp deep_map(struct) when is_struct(struct) do
+      struct
+      |> Map.from_struct()
+      |> Enum.map(fn
+        {k, %Plug.Upload{} = v} ->
+          {k, v}
+
+        {k, v} ->
+          {k, deep_map(v)}
+      end)
+      |> Enum.into(%{})
+    end
+
+    defp deep_map(list) when is_list(list), do: Enum.map(list, &deep_map/1)
+    defp deep_map(value), do: value
   end
 
   def continue_speaking(conn, unsafe_params) do
     user_id = conn.assigns.user_id
 
-    case SpeakingContract.changeset(unsafe_params) do
+    case SpeakingContract.validate_and_apply(unsafe_params) do
       {:ok, params} ->
-        params = Ecto.Changeset.apply_changes(params)
-        handle_result(conn, SpeakingContext.continue_speaking(user_id, params.speaking_id, params))
+        handle_result(conn, SpeakingContext.continue_speaking(user_id, params.speaking_id, params.answers))
 
       {:error, :invalid_params} ->
         conn
@@ -83,8 +101,14 @@ defmodule AppWeb.SpeakingController do
   def save_speaking(conn, unsafe_params) do
     user_id = conn.assigns.user_id
 
-    with {:ok, params} <- SpeakingContract.changeset(unsafe_params) do
-      handle_result(conn, SpeakingContext.save_speaking(user_id, params))
+    case SpeakingContract.validate_and_apply(unsafe_params) do
+      {:ok, params} ->
+        handle_result(conn, SpeakingContext.save_speaking(user_id, params.speaking_id, params.answers))
+
+      {:error, :invalid_params} ->
+        conn
+        |> put_status(:bad_request)
+        |> json(%{error: "Invalid params"})
     end
   end
 
@@ -95,7 +119,6 @@ defmodule AppWeb.SpeakingController do
   end
 
   defp handle_result(conn, result) do
-    dbg(result)
     case result do
       {:ok, result} ->
         json(conn, result)
@@ -132,6 +155,36 @@ defmodule AppWeb.SpeakingController do
         conn
         |> put_status(404)
         |> json(%{message: "Speaking not found"})
+
+      {:error, :result_not_found} ->
+        conn
+        |> put_status(404)
+        |> json(%{message: "Result not found"})
+
+      {:error, :speaking_completed} ->
+        conn
+        |> put_status(404)
+        |> json(%{message: "Speaking completed"})
+
+      {:error, :speaking_not_completed} ->
+        conn
+        |> put_status(404)
+        |> json(%{message: "Speaking not completed"})
+
+      {:error, :speaking_not_started} ->
+        conn
+        |> put_status(404)
+        |> json(%{message: "Speaking not started"})
+
+      {:error, :user_didnt_pass_test} ->
+        conn
+        |> put_status(401)
+        |> json(%{message: "User didn't pass the test"})
+
+      {:error, :invalid_number_of_answers} ->
+        conn
+        |> put_status(400)
+        |> json(%{message: "Number of answers is not equal to the number of questions"})
     end
   end
 end

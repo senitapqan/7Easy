@@ -1,127 +1,127 @@
     [
         {
             "question": "What is your name?", 
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking"
         },
         {
             "question": "What do you do? Do you work or are you a student?",
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking"
         },
         {
             "question": "What do you usually do in your free time?",
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking"
         },
         {
             "question": "Do you enjoy reading books? Why or why not?",
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking" 
         },
         {
             "question": "Do you live in a house or an apartment?",
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking"
         },
         {
             "question": "What kind of weather do you like the most?",
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking"
         },
         {
             "question": "Do you like going to the cinema? Why or why not?",
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking"
         },
         {
             "question": "What type of food do you usually eat?",
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking"
         },
         {
             "question": "Do you prefer mornings or evenings? Why?",
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking"
         },
         {
             "question": "How often do you go shopping?",
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking"
         },
         {
             "question": "Do you use social media a lot? What for?",
-            "sub_question": [],
+            "sub_questions": [],
             "part": 1,
             "test_type": "speaking"
         },
         {
             "question": "Describe a person who has inspired you",
-            "sub_question": ["who the person is", "how you know them", "what qualities this person has and explain how they have inspired you."],
+            "sub_questions": ["who the person is", "how you know them", "what qualities this person has and explain how they have inspired you."],
             "part": 2,
             "test_type": "speaking"
         },
         {
             "question": "Describe a book you recently read and enjoyed",
-            "sub_question": ["what the book is", "what it is about", "when you read it and explain why you enjoyed it."],
+            "sub_questions": ["what the book is", "what it is about", "when you read it and explain why you enjoyed it."],
             "part": 2,
             "test_type": "speaking"
         },
         {
             "question": "Describe a place you would like to visit in the future",
-            "sub_question": ["what the place is", "where it is", "why you want to go there and explain what you would do there."],
+            "sub_questions": ["what the place is", "where it is", "why you want to go there and explain what you would do there."],
             "part": 2,
             "test_type": "speaking"
         },
         {
             "question": "Describe a special meal you had",
-            "sub_question": ["what the meal was", "when and where you had it", "who you had it with and explain why it was special."],
+            "sub_questions": ["what the meal was", "when and where you had it", "who you had it with and explain why it was special."],
             "part": 2,
             "test_type": "speaking"
         },
         {
             "question": "Describe a piece of technology you find useful",
-            "sub_question": ["what it is", "how you use it", "how it helps you and explain why you find it useful."],
+            "sub_questions": ["what it is", "how you use it", "how it helps you and explain why you find it useful."],
             "part": 2,
             "test_type": "speaking"
         },
         {
             "question": "Describe a time when you helped someone",
-            "sub_question": ["who you helped", "how you helped them", "what the result was and explain how you felt about it."],
+            "sub_questions": ["who you helped", "how you helped them", "what the result was and explain how you felt about it."],
             "part": 2,
             "test_type": "speaking"
         },
         {
             "question": "Describe a memorable journey you took",
-            "sub_question": ["where you went", "how you traveled", "who you went with and explain why it was memorable."],
+            "sub_questions": ["where you went", "how you traveled", "who you went with and explain why it was memorable."],
             "part": 2,
             "test_type": "speaking"
         },
         {
             "question": "Describe a hobby you enjoy doing",
-            "sub_question": ["what the hobby is", "how long you’ve been doing it", "why you enjoy it and explain how it helps you relax."],
+            "sub_questions": ["what the hobby is", "how long you’ve been doing it", "why you enjoy it and explain how it helps you relax."],
             "part": 2,
             "test_type": "speaking"
         },
         {
             "question": "Describe an important tradition in your culture",
-            "sub_question": ["what the tradition is", "when and where it is celebrated", "what people do and explain why it is important."],
+            "sub_questions": ["what the tradition is", "when and where it is celebrated", "what people do and explain why it is important."],
             "part": 2,
             "test_type": "speaking"
         },
         {
             "question": "Describe a goal you set for yourself",
-            "sub_question": ["what the goal is", "when you set it", "how you are working towards it and explain why this goal is important to you."],
+            "sub_questions": ["what the goal is", "when you set it", "how you are working towards it and explain why this goal is important to you."],
             "part": 2,
             "test_type": "speaking"
         }

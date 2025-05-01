@@ -4,7 +4,7 @@ defmodule App.Repo.Migrations.CreateSpeakingQuestions do
   def change do
     create table(:speaking_questions) do
       add :question, :text
-      add :sub_question, {:array, :text}
+      add :sub_questions, {:array, :text}
       add :part, :integer
       add :test_type, :string
 
