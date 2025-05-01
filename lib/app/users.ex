@@ -74,7 +74,7 @@ defmodule App.Users do
     results_count = length(results)
 
     avg_score = user.avg_speaking_score || 0
-    new_avg_score = (avg_score * results_count + score) / (results_count + 1)
+    new_avg_score = (avg_score * (results_count - 1) + score) / results_count
 
     user
     |> change(%{avg_speaking_score: new_avg_score})
