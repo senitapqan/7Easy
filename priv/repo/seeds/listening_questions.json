@@ -162,7 +162,7 @@
     {
         "question": "The woman being interviewed is now working in the bank. Her occupation is _______.",
         "answers": [],
-        "correct_answer": "",
+        "correct_answer": "Cashier",
         "part": 3,
         "test_type": "listening",
         "test_id": 1
@@ -170,7 +170,7 @@
     {
         "question": "The woman usually spends about _______ when she goes shopping.",
         "answers": [],
-        "correct_answer": "",
+        "correct_answer": "50 pounds",
         "part": 3,
         "test_type": "listening",
         "test_id": 1
@@ -178,7 +178,7 @@
     {
         "question": "The woman often goes to _______ because she finds them convenient.",
         "answers": [],
-        "correct_answer": "",
+        "correct_answer": "Big department stores",
         "part": 3,
         "test_type": "listening",
         "test_id": 1
@@ -186,7 +186,7 @@
     {
         "question": "According to the woman, _______ is/are her most difficult thing(s) to buy.",
         "answers": [],
-        "correct_answer": "",
+        "correct_answer": "Jeans",
         "part": 3,
         "test_type": "listening",
         "test_id": 1
@@ -194,7 +194,7 @@
     {
         "question": "50% of the people being interviewed spend _______ a month.",
         "answers": [],
-        "correct_answer": "",
+        "correct_answer": "45 pounds",
         "part": 3,
         "test_type": "listening",
         "test_id": 1
@@ -202,7 +202,7 @@
     {
         "question": "15% of the people being interviewed spend _______ a month.",
         "answers": [],
-        "correct_answer": "",
+        "correct_answer": "75 pounds",
         "part": 3,
         "test_type": "listening",
         "test_id": 1
@@ -210,7 +210,7 @@
     {
         "question": "35% of the people being interviewed spend _______ a month.",
         "answers": [],
-        "correct_answer": "",
+        "correct_answer": "20 pounds",
         "part": 3,
         "test_type": "listening",
         "test_id": 1
